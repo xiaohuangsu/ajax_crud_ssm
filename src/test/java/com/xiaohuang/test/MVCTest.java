@@ -57,7 +57,6 @@ public class MVCTest {
         }
         //获取员工数据
         List<Employee> list = pageInfo.getList();
-
         for (Employee employee : list) {
             System.out.println("ID: " +  employee.getEmpId() + "==>" + employee.getEmpName());
         }
