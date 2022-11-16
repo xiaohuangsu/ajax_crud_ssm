@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!--targetRuntime设置成MyBatis3Simpl是简洁版，MyBatis3是多功能版-->
+
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <property name="suppressAllComments" value="true"/>
+        </commentGenerator>
+
+        <!--mysql连接驱动-->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/ssm_crud?characterEncoding=utf-8&amp;useSSL=false"
+                        userId="root"
+                        password="123456">
+        </jdbcConnection>
+        <!--映射文件的地址，根据项目的包自己调整-->
+        <javaModelGenerator targetPackage="com.xiaohuang.model"
+                            targetProject="./src/main/java">
+            <!--是否可用子包,-->
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!--sql映射文件的生成策略-->
+        <sqlMapGenerator targetPackage="com.xiaohuang.dao"
+                         targetProject="./src/main/resources">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!--mapper接口的生成策略-->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.xiaohuang.dao"
+                             implementationPackage="com.xiaohuang.dao.impl"
+                             targetProject="./src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <!--tableName:映射的表名，domainObjectName:实体类名称，catalog:数据库名（可有可无）-->
+        <table tableName="emp" domainObjectName="Employee"/>
+        <table tableName="dept" domainObjectName="Dept"/>
+               <!--table的设置选项enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">-->
+
+        <!--<commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true" />
+        </commentGenerator>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>-->
+    </context>
+</generatorConfiguration>

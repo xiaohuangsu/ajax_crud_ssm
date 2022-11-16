@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <settings>
+        <!--打印日志信息
+        &lt;!&ndash;<setting name="logImpl" value="STDOUT_LOGGING" />
+        &ndash;&gt;</settings>-->
+    <!--将下划线映射为驼峰-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <!--延迟加载的全局开关。当开启时，所有关联对象都会延迟加载，getEmpByStpe可以根据要查询的内容自动加载对于语句，不相干语句不会加载-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+        <!--设置为true的话，不管要查询的内容是什么都会全部加载已经设置的语句,设置为false的话就是按需加载，默认false-->
+        <setting name="aggressiveLazyLoading" value="false"/>
+    </settings>
+    
+    <plugins>
+        <!--配置分页插件-->
+        <plugin interceptor="com.github.pagehelper.PageInterceptor">
+            <!--调整分页参数合理化-->
+            <property name="reasonable" value="true"/>
+        </plugin>
+    </plugins>
+
+
+</configuration>
